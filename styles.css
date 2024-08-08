@@ -1,0 +1,268 @@
+/* {border: black solid 1px;}*/
+
+@font-face {
+    font-family: 'Chido';
+    src: url('chido.otf') format('opentype');
+
+}
+
+.hidden {
+    display: none !important;
+}
+
+body {
+   
+    margin: 0;
+    padding: 0;
+    /*background-color: rgb(250, 237, 222);*/
+    background-color: rgb(190, 246, 216);
+    font-family: 'Chido';
+    font-size: 25px;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#froggo-and-logo {
+    display: flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20vh;
+    width: 100vw;
+    height: 19vh;
+    background-color: #bef6d8;
+    
+}
+
+
+#fwl {
+    width: 90%;
+    opacity: .95;
+    max-width: 1100px;
+}
+
+
+
+#button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(190, 246, 216);
+    padding-top: .8vh;
+    padding-bottom: .8vh;
+    position: fixed;
+    bottom: 0;
+    overflow-x: scroll;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    box-sizing: border-box;
+    
+}
+
+.page-open {
+    justify-content: space-evenly !important;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Chido';
+    width: 120px;
+    height: 50px;
+    font-size: 40px;
+    border: black solid 3px;
+    background-color: white;
+    border-radius: 15px;
+    color: black;
+    margin: 3px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+/*Buttons (phone):*/
+#request, #support {
+    width: 150px;
+}
+#art, #out {
+    width: 85px;
+}
+#shop {
+    width: 95px;
+}
+#about {
+    width: 120px;
+}
+
+.open-buttons {
+    font-size: 30px;
+    width: 110px;
+}
+
+#submit {
+    font-size: 16px;
+}
+
+
+#text-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    width: 85%;
+    padding-bottom: 12vh;
+    text-align: center;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#art-box, #shop-box, #request-box, #support-box {
+    margin-bottom: 13vh;
+
+}
+
+.art, .out {
+    width: 300px;
+    border-radius: 15px;
+    border: black solid 3px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+/*#art {
+    margin-left: 10;
+}*/
+
+#about-container, #shop-container, #request-container, #support-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black solid 3px;
+    border-radius: 15px;
+    background-color: white;
+    padding: 3vw;
+    margin-bottom: 10vh;
+    width: 85vw;
+    font-size: 24px;
+}
+#out-box {
+    padding-bottom: 10vh;
+}
+
+
+#ig-logo {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 8px;
+    right: 28px;
+    width: 45px;
+}
+
+#menu-container {
+  position: relative;
+  width: 100vw;
+  background-color: #333;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.indicator {
+    display: none;
+    font-family: "Patua One", serif;
+  font-weight: 400;
+  font-style: normal;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: 700;
+
+}
+
+
+
+@media (width > 799px) {
+    button {
+        width: 200px;
+        height: 70px;
+        font-size: 50px;
+    }
+    .open-buttons {
+        width: 200px;
+        height: 70px;
+        font-size: 50px;
+    }
+
+    #froggo-and-logo {
+        justify-content: center;
+        margin: 0;
+    }
+
+
+    #fwl {
+        max-width: 1100px;
+    }
+
+    .art, .out {
+        
+        width: 35vw;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+    #about-container {
+        width: 30vw;
+        font-size: 50px;
+        padding: 1vw;
+        align-items: center;
+    }
+
+   
+    #request, #support {
+        width: 250px;
+    }
+
+    /*Buttons:*/
+    #art, #out {
+        width: 130px;
+    }
+    #shop {
+        width: 160px;
+    }
+    #about {
+        width: 190px;
+    }
+
+
+#art-container, #out-container, #about-container, #shop-container, #request-container, #support-container {
+    width: 50vw;
+    min-width: 600px; 
+}
+
+/*Images (desktop):*/
+.art, .out {
+    width: 500px;
+    border-radius: 15px;
+    border: black solid 3px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+}
