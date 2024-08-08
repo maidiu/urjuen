@@ -90,7 +90,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    margin-top: 21vh;
     width: 85%;
 
     text-align: center;
@@ -152,14 +152,13 @@ body {
 
 #ig-logo-container {
     position: fixed;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;    
     background-color: rgb(42, 6, 85);
     bottom: 0; /* Adjust as needed */
     width: 100vw; /* Adjust as needed */
-    height: 46px;
+    height: 51px;
     display: none; /* Initially hidden */
     z-index: 1000; /* Ensure it's above other content */
 }
