@@ -1,4 +1,4 @@
- *{border: rgb(255, 255, 255) solid 1px;}
+ /*{border: rgb(255, 255, 255) solid 1px;}*/
 
 @font-face {
     font-family: 'Chido';
@@ -339,14 +339,25 @@ button {
         align-items: center;
         font-family: 'ClaireBold';
         width: 150px;
-        height: 34px;
-        font-size: 20px;
+        height: 30px;
+        font-size: 18px;
         border: #660255 solid 1px;
         background-color: #ffffff;
-        border-radius: 14px;
+        border-radius: 0;
         color:#660255;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: .5px;
+        margin-right: .5px;
+    }
+    #art {
+        margin-left: 0;
+        border-top-left-radius: 14px;
+        border-bottom-left-radius: 14px;
+    }
+    #support {
+        margin-right: 0;
+
+        border-top-right-radius: 14px;
+        border-bottom-right-radius: 14px;
     }
     /*#top {
         z-index: 1000;
@@ -369,6 +380,7 @@ button {
         flex-direction: row;
         justify-content: center;
         border-radius: 14px;
+        border: 0px;
     }
     #menu {
         display: none;
@@ -418,7 +430,7 @@ button {
         justify-content: center;
         align-items: center;
         width: 100vw;
-       
+        
         background-color: #660255;
     }
     
