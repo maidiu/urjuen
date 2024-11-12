@@ -1,4 +1,4 @@
-/* {border: black solid 1px;}*/
+ *{border: rgb(255, 255, 255) solid 1px;}
 
 @font-face {
     font-family: 'Chido';
@@ -20,7 +20,8 @@ body {
     margin: 0;
     padding: 0;
     /*background-color: rgb(250, 237, 222);*/
-    background-color: rgb(42, 6, 85);
+    /*background-color: rgb(42, 6, 85);*/
+    background-color: #660255;
     font-family: 'ClaireBold';
     font-size: 25px;
     color: white;
@@ -31,9 +32,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /*height: 100vh;*/
     margin: 0;
     padding: 0;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*height: 20vh;*/
 }
 
 #froggo-and-logo {
@@ -42,19 +50,122 @@ body {
     justify-content: start;
     align-items: center;
     width: 100vw;
-    height: 21vh;
-    background-color: rgb(42, 6, 85);
-
+    /*height: 21vh;*/
+    background-color: #660255;
 }
 
 #fwl {
-    position: fixed;
+    /*position: fixed;
     top: 0px;
-    width: 90%;
+    width: 90%;*/
     opacity: .95;
     max-width: 1100px;
-    height: 15vh;
+    height: 12vh;
     width: auto;
+    padding-top: 5px;
+}
+
+#menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /**/
+    background-color: #660255;
+    padding-top: 5px;
+
+  position: relative;
+
+  width: 100%;
+
+
+}
+#both {
+    margin: 0;
+    padding: 0;
+    border: white solid 1px;
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+    border-radius: 14px;
+
+}
+
+#both.open {
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+
+}
+
+#menu {
+    margin: 0;
+    padding: 0;
+    /*border: #660255;*/
+    background-color: white;
+    color: #660255;
+    position: relative;
+    z-index: 2;
+}
+
+#menu.open {
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ClaireBold';
+    width: 170px;
+    height: 50px;
+    font-size: 40px;
+    border: #660255 solid 1px;
+    background-color: #660255;
+    border-radius: 14px;
+    color: white;
+    /*cursor: pointer;
+    flex: 0 0 auto;
+    scroll-snap-align: start;*/
+}
+
+#button-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #660255;
+  
+    border-radius: 15px;
+    top: 100%;
+    left: 0%;
+    position: absolute;
+    z-index: 1;
+    /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);*/
+    border: white solid 1px;
+    border-radius: 15px;
+    border-top: none;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    margin-left: -1px;
+
+    /*overflow-x: scroll;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    box-sizing: border-box;*/
+}
+
+.show #button-container {
+    display: flex;
+}
+
+
+
+#text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    /*width: 85%;*/
+    text-align: center;
 }
 
 #request-container {
@@ -73,8 +184,8 @@ body {
     margin: 0 auto;
     width: 170px;
     font-size: 30px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(186, 92, 233);
+    color: #660255;
+    background-color: white;
 }
 
 #bodyInput {
@@ -85,16 +196,7 @@ body {
     white-space: normal;
 }
 
-#text-container {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 21vh;
-    width: 85%;
 
-    text-align: center;
-}
 
 #support-container {
     flex-direction: column;
@@ -106,7 +208,7 @@ body {
     border-radius: 15px;
     border: white solid 3px;
     background-color: white;
-    color: rgb(42, 6, 85);
+    color: #660255;
     font-family: 'ClaireBold';
     font-size: 16px;
     height: 30px;
@@ -121,7 +223,7 @@ body {
 }
 
 #art-box, #shop-box, #request-box, #support-box {
-    margin-bottom: 13vh;
+    /*margin-bottom: 13vh;*/
 
 }
 
@@ -139,15 +241,15 @@ body {
     align-items: center;
     border: white solid 3px;
     border-radius: 15px;
-    background-color: rgb(42, 6, 85);
+    background-color: #c899c0;
     padding: 3vw;
-    margin-bottom: 10vh;
+    /*margin-bottom: 10vh;*/
     width: 85vw;
     font-size: 25px;
     color: white;
 }
 #out-box {
-    padding-bottom: 10vh;
+    /*padding-bottom: 10vh;*/
 }
 
 #ig-logo-container {
@@ -155,12 +257,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;    
-    background-color: rgb(42, 6, 85);
+    background-color: #660255;
     bottom: 0; /* Adjust as needed */
     width: 100vw; /* Adjust as needed */
     height: 51px;
     display: none; /* Initially hidden */
     z-index: 1000; /* Ensure it's above other content */
+    padding-top: 4px;
 }
 /*
  #ig-logo-container img {
@@ -175,55 +278,9 @@ body {
     width: 45px;
 }
 
-#button-container {
-    display: none;
-    flex-direction: column;
-    width: 170px;
-    background-color: rgb(42, 6, 85);
-    margin: 0;
-    border-radius: 15px;
-    /*overflow-x: scroll;
-    white-space: nowrap;
-    scroll-snap-type: x mandatory;
-    box-sizing: border-box;*/
-}
 
-#menu-container {
-    display: block;
-    border: white solid 1px;
-    border-radius: 15px;
-    background-color: rgb(42, 6, 85);
-  position: fixed;
-  top: 14%;
-  left: 28%;
-  width: 170px;
-  margin: 0;
-  z-index: 2000;
-  
-}
 
-#menu {
-    border: rgb(42, 6, 85);
-    background-color: white;
-    color: rgb(42, 6, 85);
-}
 
-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'ClaireBold';
-    width: 170px;
-    height: 50px;
-    font-size: 40px;
-    border: #2a0655 solid .1px;
-    background-color: #2a0655;
-    border-radius: 15px;
-    color: white;
-    /*cursor: pointer;
-    flex: 0 0 auto;
-    scroll-snap-align: start;*/
-}
 
 /*Buttons (phone):
 #request, #support {
@@ -261,45 +318,126 @@ button {
 
 
 
-@media (width > 799px) {
+@media (min-width: 800px) {
 
     body {
         font-size: 20px;
+        position: static;
     }
-    button {
-        width: 180px;
-        height: 34px;
-        font-size: 30px;
+    #header {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #660255;
+        height: 20vh;
     }
 
-    #menu-container {
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'ClaireBold';
+        width: 150px;
+        height: 34px;
+        font-size: 20px;
+        border: #660255 solid 1px;
+        background-color: #ffffff;
+        border-radius: 14px;
+        color:#660255;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    /*#top {
+        z-index: 1000;
         position: fixed;
-        top: 15.5%;
+        top: 0;
+        
+    }*/
+    /*#menu-container {
+        position: fixed;
+        top: 18.5%;
         left: 42.5%;
         width: 180px;
+    }*/
+
+    #both {
+        margin: 0;
+        padding: 0;
+        position: static;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border-radius: 14px;
     }
+    #menu {
+        display: none;
+    }
+    #menu-container {
+        z-index: 0;
+        display: flex;
+        width: 70%;
+        flex-direction: row !important;
+        /*border: white solid 2px;
+        border-radius: 15px;*/
+        background-color: #660255;
+        max-width: 90%;
+        position: static; /* Change position */
+        top: auto; /* Reset top */
+        left: auto; /* Reset left */
+        width: auto;
+        
+        }
     
     #button-container {
-        
-        right: 30px;
-    }
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    position: static;
+    background-color: #660255;
+    width: 70%;
+    margin: 0;
+    border-radius: 15px;
+  
+    /*overflow-x: scroll;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    box-sizing: border-box;*/
+}
+
+
 
     /*.open-buttons {
         width: 200px;
         height: 40px;
         font-size: 25px;
     }*/
-
     #froggo-and-logo {
+        display: flex;
+        flex-direction:column;
         justify-content: center;
-        margin: 0;
-        height: 22vh;
+        align-items: center;
+        width: 100vw;
+       
+        background-color: #660255;
     }
+    
+    #fwl {
+        /*position: fixed;
+        top: 0px;
+        width: 90%;*/
+        opacity: .95;
+        max-width: 1100px;
+  
+        width: auto;
+        padding-top: 5px;
+    }
+  
 
 
     #fwl {
         max-width: 800px;
-        height: 19vh;
+
         
     }
 

@@ -6,6 +6,7 @@ const request = document.getElementById('request')
 const support = document.getElementById('support')
 const invisibles = [art, out, about, shop, request, support]
 const buttonContainer = document.getElementById('button-container')
+const menuContainer = document.getElementById('menu-container')
 const fwl = document.getElementById('fwl')
 const fnl = document.getElementById('froggo-and-logo')
 const textContainer = document.getElementById('text-container')
@@ -14,6 +15,153 @@ const textDivs = document.querySelectorAll('div.text')
 const main = document.getElementById('main')
 const iglogo = document.getElementById('ig-logo')
 const indicator = document.querySelector('.indicator')
+const both = document.getElementById('both')
+
+let isScreenBig;
+
+function screenSize() {
+    if (window.innerWidth > 600) {
+        isScreenBig = true;
+    } else {
+        isScreenBig = false;
+    }
+}
+
+screenSize();
+
+
+
+const buttons = document.querySelectorAll('button')
+
+
+/*menu.addEventListener('click', ()=> {
+if (buttonContainer.style.display = 'block') {
+    buttonContainer.style.display = 'none'
+    }
+})*/
+
+let menuClicked = 0
+
+if (!isScreenBig) {
+    menu.addEventListener('click', ()=> {
+        if (menuClicked === 0) {
+            buttonContainer.style.display = 'block'
+            both.style.zIndex = '1000'
+            both.style.justifyContent = 'space-between'
+            //fnl.style.position = 'fixed'
+            textContainer.style.display = 'flex'
+            menuClicked = 1;
+        } else {
+            buttonContainer.style.display = 'none'
+            menuClicked = 0;
+        }
+    })
+}
+
+/*if(isScreenBig) {
+    menu.style.display = 'none'
+    invisibles.forEach(invisible => {
+        class
+    })
+}
+    /*menu.addEventListener('click', () => {
+        if (menuClicked === 0) {
+            buttonContainer.style.display = 'flex'
+            main.style.justifyContent = 'space-between'
+            
+            textContainer.style.display = 'flex'
+            menuClicked = 1;
+            menu.classList.add('hidden')
+            const totalWidth = Array.from(buttonContainer.children).reduce((total, button) => total + button.offsetWidth + 10, 0);
+            menuContainer.style.width = `${totalWidth}px`
+        } else {
+            buttonContainer.style.display = 'none'
+            menuClicked = 0;
+        }
+    })*/
+
+
+invisibles.forEach((invisible) => {
+    invisible.addEventListener('click', () => {
+        const buttonText = invisible.innerText.toLowerCase(); // Convert button text to lowercase
+        textDivs.forEach((div) => {
+            if (div.dataset.name === buttonText) { // Check if data-name matches button text
+                div.classList.remove('hidden'); // Remove hidden class
+            } else {
+                div.classList.add('hidden'); // Add hidden class to other divs
+            }
+        });
+    if (!isScreenBig) {buttonContainer.style.display = 'none'}
+    menuClicked = 0;
+    });
+});
+
+window.addEventListener('scroll', function() {
+    var logoContainer = document.getElementById('ig-logo-container');
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        logoContainer.style.display = 'flex'; // Show the logo when scrolled to the bottom
+    } else {
+        logoContainer.style.display = 'none'; // Hide the logo otherwise
+    }
+});
+
+
+const menuHeight = menuContainer.offsetHeight; // Get the height of the menu for spacing calculation
+
+// Show the menu when scrolling down, making it fixed at the top after the logo disappears
+window.addEventListener('scroll', () => {
+  const logoBottom = fwl.getBoundingClientRect().bottom;
+
+  // If the logo is out of view, fix the menu at the top
+  if (logoBottom <= 0) {
+    menuContainer.style.position = 'fixed';
+    menuContainer.style.top = '0'; // Fix the menu at the top
+    menuContainer.style.width = '100%'; // Make sure it stretches the full width
+    textContainer.style.marginTop = '56px'
+    menuContainer.style.paddingBottom = '7px'
+  } else {
+    menuContainer.style.position = 'relative';
+    menuContainer.style.top = '0';
+    textContainer.style.marginTop = '0'
+    menuContainer.style.paddingBottom = '0'
+  }
+})
+
+let isButtonContainerVisible = false;
+
+menu.addEventListener('click', () => {
+    isButtonContainerVisible = !isButtonContainerVisible;
+    if (isButtonContainerVisible) {
+      both.classList.toggle('open');
+      //menu.classList.toggle('open')
+    } else {
+      both.classList.toggle('open');
+      //menu.classList.toggle('open')
+    }
+  });
+
+  /* If the menu is to be shown after a certain scroll, set the display here
+  if (window.scrollY > 100) { // You can adjust the scroll distance here
+    menu.style.display = 'block'; // Show menu when scroll passes a certain point
+  } else {
+    menu.style.display = 'none'; // Hide the menu again
+  }
+});*/
+
+
+
+
+
+
+
+/*if (bigScreen) {
+    document.addEventListener('DOMContentLoaded', () => {
+        invisibles.forEach((invisible) => {
+            invisible.classList.add('hidden')
+        })
+    })
+}*/
+
 
 /*document.addEventListener('DOMContentLoaded', () => {
     console.log('1: still working')
@@ -74,63 +222,9 @@ const indicator = document.querySelector('.indicator')
 
 
 
-
-
-const buttons = document.querySelectorAll('button')
-
 /*invisibles.forEach((invisible) => {
     invisible.addEventListener('click', (event) => {
         invisibles.forEach((invisible) => {
             invisible.classList.add('hidden')
         })})
 })*/
-
-
-menu.addEventListener('click', ()=> {
-if (buttonContainer.style.display = 'block') {
-    buttonContainer.style.display = 'none'
-    }
-})
-
-let menuClicked = 0
-
-menu.addEventListener('click', ()=> {
-    if (menuClicked === 0) {
-    buttonContainer.style.display = 'block'
-    main.style.justifyContent = 'space-between'
-    fnl.style.position = 'fixed'
-
-    textContainer.style.display = 'flex'
-    menuClicked = 1;
-    } else {
-        buttonContainer.style.display = 'none'
-        menuClicked = 0;
-    }
-})
-
-invisibles.forEach((invisible) => {
-    invisible.addEventListener('click', () => {
-        const buttonText = invisible.innerText.toLowerCase(); // Convert button text to lowercase
-        textDivs.forEach((div) => {
-            if (div.dataset.name === buttonText) { // Check if data-name matches button text
-                div.classList.remove('hidden'); // Remove hidden class
-            } else {
-                div.classList.add('hidden'); // Add hidden class to other divs
-            }
-        });
-    buttonContainer.style.display = 'none'
-    menuClicked = 0;
-    });
-});
-
-window.addEventListener('scroll', function() {
-    var logoContainer = document.getElementById('ig-logo-container');
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        logoContainer.style.display = 'flex'; // Show the logo when scrolled to the bottom
-    } else {
-        logoContainer.style.display = 'none'; // Hide the logo otherwise
-    }
-});
-
-
-
