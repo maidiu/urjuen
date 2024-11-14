@@ -2,7 +2,7 @@
 /*
 purple: rgb(88, 34, 60)  solid 2px;
 green: rgb(130, 135, 32) ;
-white:r gb(247, 246, 233) ;}*/
+white: rgb(247, 246, 233) ;}*/
 
 
 @font-face {
@@ -101,7 +101,7 @@ body {
     margin: 0;
     padding: 0;
     border: rgb(247, 246, 233) solid 2px;
-    background-color: #cad142;
+    background-color: rgb(202, 210, 67);
     position: relative;
     display: inline-block;
     overflow: visible;
@@ -119,7 +119,7 @@ body {
     margin: 0;
     padding: 0;
     /*border: rgb(88, 34, 60);*/
-    background-color: #828720;
+    background-color: rgb(130, 135, 32);
     border: none;
     color: (247, 246, 233);
     position: relative;
@@ -472,13 +472,13 @@ button {
     }
 
     button:hover {
-        background-color: #b860aa;
+        background-color: #c37028;
         color: rgb(247, 246, 233);
         border-color: rgb(88, 34, 60);
     }
 
     button:active {
-        background-color: #8f3880;
+        background-color: #9e5a1e;
         color: rgb(247, 246, 233);
         border-top: #550144 solid 2px;
         border-bottom: #550144 solid 1px;

@@ -95,6 +95,7 @@ invisibles.forEach((invisible) => {
             if (div.dataset.name === buttonText) { // Check if data-name matches button text
                 div.classList.remove('hidden'); // Remove hidden class
                 both.classList.toggle('open');
+                
             } else {
                 div.classList.add('hidden'); // Add hidden class to other divs
                 
