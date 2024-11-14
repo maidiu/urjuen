@@ -1,4 +1,9 @@
- /*{border: rgb(255, 255, 255) solid 1px;}*/
+/*{border: rgb(255, 255, 255) solid 1px;}*/
+/*
+purple: rgb(88, 34, 60)  solid 2px;
+green: rgb(130, 135, 32) ;
+white:r gb(247, 246, 233) ;}*/
+
 
 @font-face {
     font-family: 'Chido';
@@ -20,12 +25,13 @@ body {
     margin: 0;
     padding: 0;
     /*background-color: rgb(250, 237, 222);*/
-    /*background-color: rgb(42, 6, 85);*/
-    background-color: #660255;
+    /*background-color: rgb(88, 34, 60);*/
+    background-color: rgb(88, 34, 60);
     font-family: 'ClaireBold';
     font-size: 25px;
-    color: white;
+    color: rgb(247, 246, 233);
 }
+
 
 #main {
     display: flex;
@@ -35,6 +41,7 @@ body {
     /*height: 100vh;*/
     margin: 0;
     padding: 0;
+    margin-bottom: 10vh;
 }
 
 #header {
@@ -42,6 +49,8 @@ body {
     flex-direction: column;
     align-items: center;
     /*height: 20vh;*/
+    margin: 0;
+    padding: 0;
 }
 
 #froggo-and-logo {
@@ -51,16 +60,18 @@ body {
     align-items: center;
     width: 100vw;
     /*height: 21vh;*/
-    background-color: #660255;
+    background-color: rgb(88, 34, 60);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #fwl {
     /*position: fixed;
     top: 0px;
     width: 90%;*/
-    opacity: .95;
+    opacity: 1;
     max-width: 1100px;
-    height: 12vh;
+    height: 80px;
     width: auto;
     padding-top: 5px;
 }
@@ -69,20 +80,28 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     /**/
-    background-color: #660255;
+    background-color: rgb(88, 34, 60);
     padding-top: 5px;
-
+    padding-bottom: 4px;
+    box-sizing: border-box;
   position: relative;
-
-  width: 100%;
-
-
 }
+
+.fixed {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /*transition: top 0.3s ease;*/
+}
+
 #both {
     margin: 0;
     padding: 0;
-    border: white solid 1px;
+    border: rgb(247, 246, 233) solid 2px;
+    background-color: #cad142;
     position: relative;
     display: inline-block;
     overflow: visible;
@@ -99,9 +118,10 @@ body {
 #menu {
     margin: 0;
     padding: 0;
-    /*border: #660255;*/
-    background-color: white;
-    color: #660255;
+    /*border: rgb(88, 34, 60);*/
+    background-color: #828720;
+    border: none;
+    color: (247, 246, 233);
     position: relative;
     z-index: 2;
 }
@@ -119,10 +139,10 @@ button {
     width: 170px;
     height: 50px;
     font-size: 40px;
-    border: #660255 solid 1px;
-    background-color: #660255;
+    border: rgb(202, 210, 67) solid 1px;
+    background-color: rgb(202, 210, 67);
     border-radius: 14px;
-    color: white;
+    color: rgb(247, 246, 233);
     /*cursor: pointer;
     flex: 0 0 auto;
     scroll-snap-align: start;*/
@@ -132,23 +152,22 @@ button {
     display: none;
     flex-direction: column;
     width: 100%;
-    background-color: #660255;
-  
+    background-color: rgb(202, 210, 67);
     border-radius: 15px;
     top: 100%;
     left: 0%;
     position: absolute;
     z-index: 1;
     /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);*/
-    border: white solid 1px;
+    border: rgb(247, 246, 233) solid 2px;
     border-radius: 15px;
     border-top: none;
     border-top-left-radius: 0%;
     border-top-right-radius: 0%;
-    margin-left: -1px;
+    margin-left: -2px;
 
     /*overflow-x: scroll;
-    white-space: nowrap;
+    rgb(247, 246, 233)-space: nowrap;
     scroll-snap-type: x mandatory;
     box-sizing: border-box;*/
 }
@@ -166,6 +185,7 @@ button {
     align-items: center;
     /*width: 85%;*/
     text-align: center;
+
 }
 
 #request-container {
@@ -184,8 +204,8 @@ button {
     margin: 0 auto;
     width: 170px;
     font-size: 30px;
-    color: #660255;
-    background-color: white;
+    color: rgb(88, 34, 60);
+    background-color: rgb(247, 246, 233);
 }
 
 #bodyInput {
@@ -206,9 +226,9 @@ button {
 
 .input {
     border-radius: 15px;
-    border: white solid 3px;
-    background-color: white;
-    color: #660255;
+    border: rgb(247, 246, 233) solid 3px;
+    background-color: rgb(247, 246, 233);
+    color: rgb(88, 34, 60);
     font-family: 'ClaireBold';
     font-size: 16px;
     height: 30px;
@@ -230,7 +250,7 @@ button {
 .art, .out {
     width: 300px;
     border-radius: 15px;
-    border: white solid 3px;
+    border: rgb(247, 246, 233) solid 3px;
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
@@ -239,31 +259,33 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: white solid 3px;
+    border: rgb(247, 246, 233) solid 3px;
     border-radius: 15px;
-    background-color: #c899c0;
+    background-color: #c37028;
     padding: 3vw;
     /*margin-bottom: 10vh;*/
     width: 85vw;
     font-size: 25px;
-    color: white;
+    color: rgb(247, 246, 233);
 }
-#out-box {
-    /*padding-bottom: 10vh;*/
-}
+
 
 #ig-logo-container {
     position: fixed;
     justify-content: center;
     align-items: center;
     flex-direction: row;    
-    background-color: #660255;
+    background-color: rgb(88, 34, 60);
     bottom: 0; /* Adjust as needed */
     width: 100vw; /* Adjust as needed */
     height: 51px;
     display: none; /* Initially hidden */
     z-index: 1000; /* Ensure it's above other content */
     padding-top: 4px;
+}
+
+#ig-logo-container.show {
+    display: flex;
 }
 /*
  #ig-logo-container img {
@@ -329,36 +351,36 @@ button {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: #660255;
+        background-color: rgb(88, 34, 60);
         height: 20vh;
     }
-
-    button {
+    #froggo-and-logo {
         display: flex;
+        flex-direction:column;
         justify-content: center;
         align-items: center;
-        font-family: 'ClaireBold';
-        width: 150px;
-        height: 30px;
-        font-size: 18px;
-        border: #660255 solid 1px;
-        background-color: #ffffff;
-        border-radius: 0;
-        color:#660255;
-        margin-left: .5px;
-        margin-right: .5px;
+        width: 100vw;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        background-color: rgb(88, 34, 60);
     }
-    #art {
-        margin-left: 0;
-        border-top-left-radius: 14px;
-        border-bottom-left-radius: 14px;
+    
+   
+    
+    #fwl {
+        position: static;
+        /*top: 0px;
+        width: 90%;*/
+        opacity: .95;
+        max-width: 1100px;
+        height: 16vh;
+        width: auto;
+        
     }
-    #support {
-        margin-right: 0;
+    
 
-        border-top-right-radius: 14px;
-        border-bottom-right-radius: 14px;
-    }
+    
+    
     /*#top {
         z-index: 1000;
         position: fixed;
@@ -371,94 +393,113 @@ button {
         left: 42.5%;
         width: 180px;
     }*/
+#both {
+    margin: 0;
+    padding: 0;
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 14px;
+    border: 0;
+    background-color: rgb(88, 34, 60);
+}
+#menu {
+    display: none;
+}
+#menu-container {
+    z-index: 0;
+    display: flex;
+    width: 70%;
+    flex-direction: row !important;
+    border: rgb(247, 246, 233) solid 0px;
+    /*border-radius: 15px;*/
+    background-color: rgb(88, 34, 60);
+    padding-top: 2px;
+    padding-bottom: 0;
+    max-width: 90%;
+    position: static;
+    top: auto; 
+    left: auto; 
+    width: auto;
+}
 
-    #both {
-        margin: 0;
-        padding: 0;
-        position: static;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        border-radius: 14px;
-        border: 0px;
-    }
-    #menu {
-        display: none;
-    }
-    #menu-container {
-        z-index: 0;
-        display: flex;
-        width: 70%;
-        flex-direction: row !important;
-        /*border: white solid 2px;
-        border-radius: 15px;*/
-        background-color: #660255;
-        max-width: 90%;
-        position: static; /* Change position */
-        top: auto; /* Reset top */
-        left: auto; /* Reset left */
-        width: auto;
-        
-        }
+.fixed {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /*transition: top 0.3s ease;*/
+}
+    
     
     #button-container {
     display: flex;
     flex-direction: row !important;
     justify-content: space-between !important;
     position: static;
-    background-color: #660255;
+    background-color: rgb(88, 34, 60);
     width: 70%;
     margin: 0;
     border-radius: 15px;
+    border: 0;
   
-    /*overflow-x: scroll;
-    white-space: nowrap;
-    scroll-snap-type: x mandatory;
-    box-sizing: border-box;*/
+    
 }
+  
+    #text-container {
+        color: rgb(247, 246, 233);
+        margin-top: 40px;
+    }
 
-
-
-    /*.open-buttons {
-        width: 200px;
-        height: 40px;
-        font-size: 25px;
-    }*/
-    #froggo-and-logo {
+    button {
         display: flex;
-        flex-direction:column;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        
-        background-color: #660255;
-    }
-    
-    #fwl {
-        /*position: fixed;
-        top: 0px;
-        width: 90%;*/
-        opacity: .95;
-        max-width: 1100px;
-  
-        width: auto;
-        padding-top: 5px;
-    }
-  
-
-
-    #fwl {
-        max-width: 800px;
-
-        
+        font-family: 'ClaireBold';
+        width: 150px;
+        height: 30px;
+        font-size: 18px;
+        border: rgb(88, 34, 60) solid 1px;
+        border-bottom: rgb(88, 34, 60) solid 2px;
+        background-color: rgb(130, 135, 32);
+        border-radius: 0;
+        color:rgb(247, 246, 233);
+        margin-left: .5px;
+        margin-right: .5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     }
 
-    .art, .out {
-        
-        width: 35vw;
-        margin-top: 1vh;
-        margin-bottom: 1vh;
+    button:hover {
+        background-color: #b860aa;
+        color: rgb(247, 246, 233);
+        border-color: rgb(88, 34, 60);
     }
+
+    button:active {
+        background-color: #8f3880;
+        color: rgb(247, 246, 233);
+        border-top: #550144 solid 2px;
+        border-bottom: #550144 solid 1px;
+        transform: translateY(1px);
+    }
+
+    #art {
+        margin-left: 0;
+        border-top-left-radius: 14px;
+        border-bottom-left-radius: 14px;
+    }
+    #support {
+        margin-right: 0;
+
+        border-top-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+    }
+
+   
+
+   
     #about-container {
         width: 30vw;
         font-size: 25px;
@@ -484,29 +525,22 @@ button {
 }
 
 /*Images (desktop):*/
+
+
 .art, .out {
     width: 400px;
     border-radius: 15px;
-    border: white solid 3px;
+    border: rgb(242, 252, 211) solid 3px;
     margin-top: 1vh;
     margin-bottom: 1vh;
-    color: white;
+    color: rgb(247, 246, 233);
 }
 
 
-
-
-
-
-#text-container {
-    color: white;
-    margin-top: 22vh;
-}
 #request-container, #shop-container {
     width: 350px !important;
     min-width: 350px !important;
 }
-
 
 #support-container {
     justify-content: center;

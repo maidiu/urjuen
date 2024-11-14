@@ -18,12 +18,19 @@ const indicator = document.querySelector('.indicator')
 const both = document.getElementById('both')
 
 let isScreenBig;
+let textContMargin;
+let menuContPadding;
 
 function screenSize() {
     if (window.innerWidth > 600) {
         isScreenBig = true;
+        textContMargin = 40;
+        menuContPadding = 7
+        
     } else {
         isScreenBig = false;
+        textContMargin = 45
+        menuContPadding = 7
     }
 }
 
@@ -87,8 +94,10 @@ invisibles.forEach((invisible) => {
         textDivs.forEach((div) => {
             if (div.dataset.name === buttonText) { // Check if data-name matches button text
                 div.classList.remove('hidden'); // Remove hidden class
+                both.classList.toggle('open');
             } else {
                 div.classList.add('hidden'); // Add hidden class to other divs
+                
             }
         });
     if (!isScreenBig) {buttonContainer.style.display = 'none'}
@@ -107,25 +116,45 @@ window.addEventListener('scroll', function() {
 
 
 const menuHeight = menuContainer.offsetHeight; // Get the height of the menu for spacing calculation
-
+const mainAfter = main.offsetHeight - menuHeight
 // Show the menu when scrolling down, making it fixed at the top after the logo disappears
-window.addEventListener('scroll', () => {
-  const logoBottom = fwl.getBoundingClientRect().bottom;
+if(!isScreenBig) {
+    window.addEventListener('scroll', () => {
+  const logoBottom = fnl.getBoundingClientRect().bottom;
+
 
   // If the logo is out of view, fix the menu at the top
   if (logoBottom <= 0) {
-    menuContainer.style.position = 'fixed';
-    menuContainer.style.top = '0'; // Fix the menu at the top
-    menuContainer.style.width = '100%'; // Make sure it stretches the full width
-    textContainer.style.marginTop = '56px'
-    menuContainer.style.paddingBottom = '7px'
+    //menuContainer.style.position = 'fixed';
+    //menuContainer.style.top = '0'; // Fix the menu at the top
+    //menuContainer.style.width = '100%'; // Make sure it stretches the full width
+    menuContainer.classList.add('fixed')
+    textContainer.style.marginTop = `${textContMargin + menuHeight}px`
+    //menuContainer.style.paddingBottom = '0'
   } else {
-    menuContainer.style.position = 'relative';
+    menuContainer.classList.remove('fixed')
     menuContainer.style.top = '0';
-    textContainer.style.marginTop = '0'
-    menuContainer.style.paddingBottom = '0'
+    textContainer.style.marginTop = `${textContMargin}px`
+    //menuContainer.style.paddingBottom = `${menuContPadding}px`
   }
-})
+})}
+
+if (isScreenBig) {
+    window.addEventListener('scroll', () => {
+        const logoBottom = fnl.getBoundingClientRect().bottom;
+        console.log(logoBottom)
+        if (logoBottom <= 0) {
+            menuContainer.classList.add('fixed')
+            textContainer.style.marginTop = `${textContMargin + menuHeight}px`
+            main.style.height = `${mainAfter}px`;
+
+        } else {
+            menuContainer.classList.remove('fixed')
+            menuContainer.style.top = '0';
+            textContainer.style.marginTop = `${textContMargin}px`
+            main.style.height = ''
+    }
+})}
 
 let isButtonContainerVisible = false;
 
