@@ -17,6 +17,13 @@ const iglogo = document.getElementById('ig-logo')
 const indicator = document.querySelector('.indicator')
 const both = document.getElementById('both')
 
+const galleries = [
+    ["/images/plop/plop1.png", "/images/plop/plop2.png", "/images/plop/plop3.png", "/images/plop/plop4.png", "/images/plop/plop5.png", ],
+    ["/images/tunnels/tunnels1.webp", "/images/tunnels/tunnels2.webp", "/images/tunnels/tunnels3.webp", "/images/tunnels/tunnels4.webp", "/images/tunnels/tunnels5.webp", "/images/tunnels/tunnels6.webp", "/images/tunnels/tunnels7.webp", ],
+    ["/images/miller/miller1.webp", "/images/miller/miller2.webp", "/images/miller/miller3.webp", "/images/miller/miller4.webp", "/images/miller/miller5.webp", "/images/miller/miller6.webp", "/images/miller/miller7.webp", "/images/miller/miller8.webp", ]
+];
+
+
 let isScreenBig;
 let textContMargin;
 let menuContPadding;
@@ -169,6 +176,70 @@ menu.addEventListener('click', () => {
       //menu.classList.toggle('open')
     }
   });
+
+
+  let currentSlide = 0;
+  let currentGallery = 0
+
+  function openLightbox(galleryIndex) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImages = document.getElementById("lightboxImages");
+
+    // Set current gallery and reset current slide
+    currentGallery = galleryIndex;
+    currentSlide = 0;
+
+    // Clear existing lightbox content
+    lightboxImages.innerHTML = "";
+
+    // Populate lightbox with images from the selected gallery
+    galleries[galleryIndex].forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Gallery ${galleryIndex + 1} Image ${i + 1}`;
+        if (i === 0) img.classList.add("active"); // Show the first image by default
+        lightboxImages.appendChild(img);
+    });
+
+    // Show the lightbox
+    lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function changeSlide(direction) {
+    const lightboxImages = document.getElementById("lightboxImages").children;
+    lightboxImages[currentSlide].classList.remove("active");
+
+    // Update the current slide index
+    currentSlide += direction;
+
+    // Wrap around the slides
+    if (currentSlide >= lightboxImages.length) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = lightboxImages.length - 1;
+
+    // Show the new active slide
+    lightboxImages[currentSlide].classList.add("active");
+}
+
+
+
+
+// Add a click event listener to the lightbox
+lightbox.addEventListener("click", (event) => {
+    // Ensure the click is not on the image, navigation buttons, or close button
+    if (
+        event.target === lightbox // Clicked on the background
+    ) {
+        closeLightbox();
+    }
+});
+
+
+
+
 
   /* If the menu is to be shown after a certain scroll, set the display here
   if (window.scrollY > 100) { // You can adjust the scroll distance here
