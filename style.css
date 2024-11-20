@@ -250,7 +250,7 @@ button {
 .art, .out {
     width: 300px;
     border-radius: 15px;
-    border: rgb(247, 246, 233) solid 3px;
+    
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
@@ -314,18 +314,20 @@ button {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.831);
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .lightbox-content {
     
     flex-direction: column;
-    width: 80%;
+    width: 95%;
     max-width: 400px;
     height: auto;
+    /*overflow: hidden;*/
 }
 
 .lightbox-images {
@@ -333,24 +335,30 @@ button {
     align-self: center;
     max-width: 450px;
     height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    height: 100%;
 }
 
 
 .lightbox-images img {
     max-height: 400px;
-    
+    /*flex-shrink: 0;*/
     justify-self: center;
     align-self: center;
-    display: none; /* Hide all images initially */
+    width: 100%;
+    height: auto;
+    /*object-fit: contain;
+    scroll-snap-align: start;*/
 }
 
-.lightbox-images img.active {
-    display: block; /* Show only the active image */
-}
+
 
 .prev, .next {
     cursor: pointer;
-    
     width: 30px;
     top: 100%;
     padding: 16px;
@@ -358,6 +366,7 @@ button {
     font-size: 24px;
     border: none;
     transition: 0.3s;
+    display: none;
 }
 
 .prev {
@@ -372,6 +381,45 @@ button {
     position: absolute;
     top: 30%;
     justify-self: end;
+    display: none;
+} 
+
+.swipe-indicator {
+    position: absolute;
+    top: 45.5%;
+    right: 0%;
+    font-size: 2.5rem;
+    color: rgb(157, 65, 109);
+    opacity: 0.8; /* Slightly transparent */
+    animation: pulse 1.5s infinite; /* Add a pulsing animation */
+    display: none; /* Hidden by default */
+    pointer-events: none; /* Ensure it doesn't block interactions */
+}
+
+/* Optional: Add a pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+
+@media (max-width: 799px) {
+    .prev .next {
+        display: none !important;
+    }
+    .swipe-indicator {
+        display: block; /* Show only on mobile */
+    }
 }
 
 
@@ -520,8 +568,10 @@ button {
 }
   
     #text-container {
+        display: flex;
         color: rgb(247, 246, 233);
         margin-top: 40px;
+        width: 100%;
     }
 
     button {
@@ -591,15 +641,59 @@ button {
     }*/
 
 
-#art-container, #out-container, #about-container, #shop-container, #request-container, #support-container {
+#out-container, #about-container, #shop-container, #request-container, #support-container {
     width: 50vw;
     min-width: 600px; 
 }
 
 /*Images (desktop):*/
 
+#art-container {
+    width: 100% !important;
+    display: flex;
+}
 
-.art, .out {
+#art-box {
+    width: 100vw !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.art img {
+    height: 300px;
+}
+
+
+.thumbnail {
+    width: calc(50% - 20px);
+    margin: 10px;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail img {
+    width: 75%;
+    height: auto;
+    cursor: pointer;
+}
+
+.art {
+    width: calc(40% - 10px) !important; /* Two items per row */
+    margin: 10px;
+        border-radius: 15px;
+        
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        color: rgb(247, 246, 233);
+}
+
+.out {
     width: 400px;
     border-radius: 15px;
     border: rgb(242, 252, 211) solid 3px;
@@ -633,21 +727,21 @@ button {
     max-width: 20px;
     max-height: 30px;  }
 */
-}
+
 
 
 .lightbox {
     display: none;
     position: fixed;
-    z-index: 999;
+    z-index: 1001;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 .lightbox-content {
@@ -658,10 +752,14 @@ button {
 }
 
 .lightbox-images {
-    justify-self: center;
-    align-self: center;
+    justify-self: center !important;
+    align-self: center !important;
     max-width: 450px;
     height: auto;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    width: auto;
 }
 
 
@@ -669,13 +767,23 @@ button {
     height: 100%;
     width: auto;
     max-width: 450px;
-    justify-self: center;
-    align-self: center;
+    justify-self: center !important;
+    align-self: center !important;
     display: none; /* Hide all images initially */
+}
+
+.lightbox-images img:not(.active) {
+    display: none; /* Show only the active image */
 }
 
 .lightbox-images img.active {
     display: block; /* Show only the active image */
+    justify-self: center;
+    align-self: center;
+}
+
+.swipe-indicator {
+    display: none !important;
 }
 
 .prev, .next {
@@ -688,6 +796,7 @@ button {
     font-size: 24px;
     border: none;
     transition: 0.3s;
+    display: flex;
 }
 
 .prev {
@@ -702,4 +811,6 @@ button {
     position: absolute;
     top: 30%;
     justify-self: end;
+}
+
 }

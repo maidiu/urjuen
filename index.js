@@ -16,11 +16,13 @@ const main = document.getElementById('main')
 const iglogo = document.getElementById('ig-logo')
 const indicator = document.querySelector('.indicator')
 const both = document.getElementById('both')
+const swipeIndicator = document.querySelector('.swipe-indicator');
 
 const galleries = [
     ["/images/plop/plop1.png", "/images/plop/plop2.png", "/images/plop/plop3.png", "/images/plop/plop4.png", "/images/plop/plop5.png", ],
     ["/images/tunnels/tunnels1.webp", "/images/tunnels/tunnels2.webp", "/images/tunnels/tunnels3.webp", "/images/tunnels/tunnels4.webp", "/images/tunnels/tunnels5.webp", "/images/tunnels/tunnels6.webp", "/images/tunnels/tunnels7.webp", ],
-    ["/images/miller/miller1.webp", "/images/miller/miller2.webp", "/images/miller/miller3.webp", "/images/miller/miller4.webp", "/images/miller/miller5.webp", "/images/miller/miller6.webp", "/images/miller/miller7.webp", "/images/miller/miller8.webp", ]
+    ["/images/miller/miller1.webp", "/images/miller/miller2.webp", "/images/miller/miller3.webp", "/images/miller/miller4.webp", "/images/miller/miller5.webp", "/images/miller/miller6.webp", "/images/miller/miller7.webp", "/images/miller/miller8.webp", ],
+    ['/images/buthamas/buthamas1.webp', '/images/buthamas/buthamas2.webp', '/images/buthamas/buthamas3.webp', '/images/buthamas/buthamas4.webp', '/images/buthamas/buthamas5.webp', '/images/buthamas/buthamas6.webp', '/images/buthamas/buthamas7.webp', '/images/buthamas/buthamas8.webp', '/images/buthamas/buthamas9.webp', ]
 ];
 
 
@@ -28,20 +30,28 @@ let isScreenBig;
 let textContMargin;
 let menuContPadding;
 
-function screenSize() {
-    if (window.innerWidth > 600) {
-        isScreenBig = true;
+function updateScreenSize() {
+    isScreenBig = window.innerWidth > 600;
+}
+
+function marginsPadding() {
+    if (isScreenBig) {
         textContMargin = 40;
         menuContPadding = 7
         
     } else {
-        isScreenBig = false;
         textContMargin = 45
         menuContPadding = 7
     }
 }
 
-screenSize();
+window.addEventListener("resize", () => {
+    updateScreenSize
+    marginsPadding
+});
+
+updateScreenSize();
+marginsPadding();
 
 
 
@@ -181,27 +191,31 @@ menu.addEventListener('click', () => {
   let currentSlide = 0;
   let currentGallery = 0
 
-  function openLightbox(galleryIndex) {
+
+function openLightbox(galleryIndex) {
+
     const lightbox = document.getElementById("lightbox");
     const lightboxImages = document.getElementById("lightboxImages");
-
-    // Set current gallery and reset current slide
-    currentGallery = galleryIndex;
-    currentSlide = 0;
-
-    // Clear existing lightbox content
     lightboxImages.innerHTML = "";
-
-    // Populate lightbox with images from the selected gallery
     galleries[galleryIndex].forEach((src, i) => {
         const img = document.createElement("img");
         img.src = src;
         img.alt = `Gallery ${galleryIndex + 1} Image ${i + 1}`;
-        if (i === 0) img.classList.add("active"); // Show the first image by default
+
+
+    if (isScreenBig && i === 0) {
+        img.classList.add("active");} // Show the first image by default
         lightboxImages.appendChild(img);
+        if (swipeIndicator) {
+            swipeIndicator.style.display = "block"; // Make it visible
+        }
     });
 
-    // Show the lightbox
+    if (!isScreenBig) {
+        lightboxImages.style.display = 'flex'
+        lightboxImages.scrollLeft = 0;
+    } 
+
     lightbox.style.display = "flex";
 }
 
@@ -209,33 +223,135 @@ function closeLightbox() {
     document.getElementById("lightbox").style.display = "none";
 }
 
-function changeSlide(direction) {
+function showSlide(index) {
     const lightboxImages = document.getElementById("lightboxImages").children;
-    lightboxImages[currentSlide].classList.remove("active");
+    if (index < 0) index = lightboxImages.length - 1; // Wrap around to last image
+    if (index >= lightboxImages.length) index = 0; // Wrap around to first image
 
-    // Update the current slide index
-    currentSlide += direction;
+    // Update current slide index
+    currentSlide = index;
 
-    // Wrap around the slides
-    if (currentSlide >= lightboxImages.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = lightboxImages.length - 1;
-
-    // Show the new active slide
-    lightboxImages[currentSlide].classList.add("active");
+    // Show only the current slide
+    Array.from(lightboxImages).forEach((img, i) => {
+        img.classList.toggle("active", i === index);
+    });
 }
 
+function changeSlide(direction) {
+    showSlide(currentSlide + direction);
+}
 
-
-
-// Add a click event listener to the lightbox
-lightbox.addEventListener("click", (event) => {
-    // Ensure the click is not on the image, navigation buttons, or close button
-    if (
-        event.target === lightbox // Clicked on the background
-    ) {
-        closeLightbox();
-    }
+document.querySelectorAll(".thumbnail").forEach((thumbnail, index) => {
+    thumbnail.addEventListener("click", () => openLightbox(index));
 });
+
+document.querySelector(".prev").addEventListener("click", (e) => {changeSlide(-1);})
+document.querySelector(".next").addEventListener("click", (e) => {changeSlide(1);})
+
+
+lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {closeLightbox();}
+});
+
+function hideSwipeIndicator() {
+    if (swipeIndicator) {
+        swipeIndicator.style.display = 'none'; // Hide the arrow
+    }
+}
+
+lightboxImages.addEventListener('scroll', hideSwipeIndicator);
+lightboxImages.addEventListener('touchstart', hideSwipeIndicator);
+lightboxImages.addEventListener('touchmove', hideSwipeIndicator);
+
+
+/*if (window.matchMedia('max-width: 599').matches) {
+    let currentSlide = 0;
+let startX = 0; // Start position of the swipe
+let currentX = 0; // Current position during swipe
+let isSwiping = false; // Tracks if a swipe is happening
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImages = document.getElementById("lightboxImages");
+
+// Array of galleries (example setup)
+const galleries = [
+    ["gallery1_image1.jpg", "gallery1_image2.jpg", "gallery1_image3.jpg"],
+    ["gallery2_image1.jpg", "gallery2_image2.jpg", "gallery2_image3.jpg"],
+    ["gallery3_image1.jpg", "gallery3_image2.jpg", "gallery3_image3.jpg"]
+];
+
+function openLightbox(galleryIndex) {
+    currentSlide = 0;
+
+    // Clear existing lightbox content
+    lightboxImages.innerHTML = "";
+
+    // Add images for the selected gallery
+    galleries[galleryIndex].forEach((src) => {
+        const img = document.createElement("img");
+        img.src = src;
+        lightboxImages.appendChild(img);
+    });
+
+    // Set the width dynamically for all images
+    lightboxImages.style.transform = `translateX(0)`; // Reset to the first image
+    lightbox.style.display = "flex";
+
+    // Add event listeners for touch gestures
+    lightbox.addEventListener("touchstart", handleTouchStart, { passive: true });
+    lightbox.addEventListener("touchmove", handleTouchMove, { passive: true });
+    lightbox.addEventListener("touchend", handleTouchEnd, { passive: true });
+}
+
+function closeLightbox() {
+    lightbox.style.display = "none";
+    lightbox.removeEventListener("touchstart", handleTouchStart);
+    lightbox.removeEventListener("touchmove", handleTouchMove);
+    lightbox.removeEventListener("touchend", handleTouchEnd);
+}
+
+function handleTouchStart(event) {
+    isSwiping = true;
+    startX = event.touches[0].clientX; // Starting X position of the swipe
+    currentX = startX; // Initialize currentX
+}
+
+function handleTouchMove(event) {
+    if (!isSwiping) return;
+
+    currentX = event.touches[0].clientX; // Update the current position
+    const deltaX = currentX - startX;
+
+    // Translate the container dynamically based on swipe movement
+    lightboxImages.style.transform = `translateX(calc(${(-100 * currentSlide)}% + ${deltaX}px))`;
+}
+
+function handleTouchEnd() {
+    if (!isSwiping) return;
+
+    const deltaX = currentX - startX;
+    isSwiping = false;
+
+    // Determine if the swipe was strong enough to move to the next/previous slide
+    if (deltaX > 50 && currentSlide > 0) {
+        // Swipe right (previous slide)
+        currentSlide--;
+    } else if (deltaX < -50 && currentSlide < galleries[0].length - 1) {
+        // Swipe left (next slide)
+        currentSlide++;
+    }
+
+    // Snap to the current slide
+    lightboxImages.style.transition = "transform 0.3s ease";
+    lightboxImages.style.transform = `translateX(-${100 * currentSlide}%)`;
+
+    // Reset swipe data
+    setTimeout(() => {
+        lightboxImages.style.transition = ""; // Remove transition after snap
+    }, 300);
+}
+
+}
 
 
 
