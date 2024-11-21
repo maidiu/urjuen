@@ -87,6 +87,7 @@ body {
     padding-bottom: 4px;
     box-sizing: border-box;
   position: relative;
+  width: 100%;
 }
 
 .fixed {
