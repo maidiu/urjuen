@@ -20,9 +20,11 @@ const swipeIndicator = document.querySelector('.swipe-indicator');
 
 const galleries = [
     ["images/plop/plop1.png", "images/plop/plop2.png", "images/plop/plop3.png", "images/plop/plop4.png", "images/plop/plop5.png", ],
-    ["images/tunnels/tunnels1.webp", "images/tunnels/tunnels2.webp", "images/tunnels/tunnels3.webp", "images/tunnels/tunnels4.webp", "images/tunnels/tunnels5.webp", "images/tunnels/tunnels6.webp", "images/tunnels/tunnels7.webp", ],
-    ["images/miller/miller1.webp", "images/miller/miller2.webp", "images/miller/miller3.webp", "images/miller/miller4.webp", "images/miller/miller5.webp", "images/miller/miller6.webp", "images/miller/miller7.webp", "images/miller/miller8.webp", ],
-    ['images/buthamas/buthamas1.webp', 'images/buthamas/buthamas2.webp', 'images/buthamas/buthamas3.webp', 'images/buthamas/buthamas4.webp', 'images/buthamas/buthamas5.webp', 'images/buthamas/buthamas6.webp', 'images/buthamas/buthamas7.webp', 'images/buthamas/buthamas8.webp', 'images/buthamas/buthamas9.webp', ]
+    ["images/tunnels/tunnels1.webp", "images/tunnels/tunnels2.webp", "images/tunnels/tunnels3.webp", "images/tunnels/tunnels4.webp", "images/tunnels/tunnels5.webp", "images/tunnels/tunnels6.webp", "images/tunnels/tunnels7.webp"],
+    ["images/miller/miller1.webp", "images/miller/miller2.webp", "images/miller/miller3.webp", "images/miller/miller4.webp", "images/miller/miller5.webp", "images/miller/miller6.webp", "images/miller/miller7.webp", "images/miller/miller8.webp"],
+    ['images/buthamas/buthamas1.webp', 'images/buthamas/buthamas2.webp', 'images/buthamas/buthamas3.webp', 'images/buthamas/buthamas4.webp', 'images/buthamas/buthamas5.webp', 'images/buthamas/buthamas6.webp', 'images/buthamas/buthamas7.webp', 'images/buthamas/buthamas8.webp'],
+    ['images/shop/watermelon/watermelonshirt1.png', 'images/shop/watermelon/watermelon.png'],
+    ['images/shop/molotov/molotovshirt1.png', 'images/shop/molotov/molotov.png']
 ];
 
 
@@ -157,7 +159,7 @@ if(!isScreenBig) {
   }
 })}
 
-if (isScreenBig) {
+/*if (isScreenBig) {
     window.addEventListener('scroll', () => {
         const logoBottom = fnl.getBoundingClientRect().bottom;
         console.log(logoBottom)
@@ -172,7 +174,7 @@ if (isScreenBig) {
             textContainer.style.marginTop = `${textContMargin}px`
             main.style.height = ''
     }
-})}
+})}*/
 
 let isButtonContainerVisible = false;
 
@@ -190,6 +192,7 @@ menu.addEventListener('click', () => {
 
   let currentSlide = 0;
   let currentGallery = 0
+  let isTransitioning = false;
 
 
 function openLightbox(galleryIndex) {
@@ -224,21 +227,34 @@ function closeLightbox() {
 }
 
 function showSlide(index) {
-    const lightboxImages = document.getElementById("lightboxImages").children;
-    if (index < 0) index = lightboxImages.length - 1; // Wrap around to last image
-    if (index >= lightboxImages.length) index = 0; // Wrap around to first image
+    // Select only <img> elements within #lightboxImages
+    const lightboxImages = Array.from(document.querySelectorAll("#lightboxImages img"));
+    const totalSlides = lightboxImages.length;
+    console.log(`showSlide called with index: ${index}`);
+
+    // Ensure the index wraps around correctly
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
 
     // Update current slide index
     currentSlide = index;
+    console.log(`Updated currentSlide: ${currentSlide}`);
 
-    // Show only the current slide
-    Array.from(lightboxImages).forEach((img, i) => {
-        img.classList.toggle("active", i === index);
+    // Update the active class
+    lightboxImages.forEach((img, i) => {
+        img.classList.toggle("active", i === currentSlide);
     });
+    setTimeout(() => {
+        isTransitioning = false;
+    }, 300);
 }
 
+
 function changeSlide(direction) {
+    if (isTransitioning) return; // Prevent multiple triggers
+    isTransitioning = true; // Lock transition
     showSlide(currentSlide + direction);
+    console.log(`changeSlide called with direction: ${direction}`);
 }
 
 document.querySelectorAll(".thumbnail").forEach((thumbnail, index) => {
@@ -262,6 +278,45 @@ function hideSwipeIndicator() {
 lightboxImages.addEventListener('scroll', hideSwipeIndicator);
 lightboxImages.addEventListener('touchstart', hideSwipeIndicator);
 lightboxImages.addEventListener('touchmove', hideSwipeIndicator);
+
+
+
+
+document.querySelectorAll('.thumbnail.art').forEach((thumbnail) => {
+    // Get the data-name attribute's value
+    const hoverTextContent = thumbnail.getAttribute('data-name');
+
+    // Create the hover text element
+    const hoverText = document.createElement('span');
+    hoverText.textContent = hoverTextContent; // Set the text from data-name
+    hoverText.classList.add('hover-text');
+    
+
+    // Append the hover text to the thumbnail
+    thumbnail.appendChild(hoverText);
+
+    // Add hover event listeners
+    thumbnail.addEventListener('mouseenter', () => {
+        hoverText.style.display = 'block'; // Show text on hover
+
+    });
+
+    thumbnail.addEventListener('mouseleave', () => {
+        hoverText.style.display = 'none'; // Hide text when not hovering
+   
+    });
+});
+document.querySelectorAll('.thumbnail.shop img').forEach((img) => {
+    const imageSrc = img.getAttribute('src');
+    img.style.webkitMaskImage = `url(${imageSrc})`;
+    img.style.maskImage = `url(${imageSrc})`;
+  });
+  
+
+
+
+
+
 
 
 /*if (window.matchMedia('max-width: 599').matches) {

@@ -1,4 +1,4 @@
-*{border: rgb(255, 255, 255) solid 1px;}
+/*{border: rgb(255, 255, 255) solid 1px;}*/
 /*
 purple: rgb(88, 34, 60)  solid 2px;
 green: rgb(130, 135, 32) ;
@@ -240,6 +240,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 #art-box, #shop-box, #request-box, #support-box {
@@ -257,9 +258,10 @@ button {
 
 #about-container, #shop-container, #request-container, #support-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: rgb(247, 246, 233) solid 3px;
+    border: rgb(247, 246, 233) solid 0px;
     border-radius: 15px;
     background-color: #c37028;
     padding: 3vw;
@@ -270,6 +272,7 @@ button {
 }
 
 
+
 #ig-logo-container {
     position: fixed;
     justify-content: center;
@@ -277,7 +280,7 @@ button {
     flex-direction: row;    
     background-color: rgb(88, 34, 60);
     bottom: 0; /* Adjust as needed */
-    width: 100%; /* Adjust as needed */
+    width: 100vw; /* Adjust as needed */
     height: 51px;
     display: none; /* Initially hidden */
     z-index: 1000; /* Ensure it's above other content */
@@ -460,46 +463,65 @@ button {
 
 
 
-
-
 @media (min-width: 800px) {
 
+
     body {
+        all: unset;
         font-size: 20px;
         position: static;
+        margin: 0;
+        padding: 0;
+        /*background-color: rgb(250, 237, 222);*/
+        /*background-color: rgb(88, 34, 60);*/
+        background-color: rgb(88, 34, 60);
+        font-family: 'ClaireBold';
+        color: rgb(247, 246, 233);
+    }
+
+    #main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /*height: 100vh;*/
+        margin: 0;
+        padding: 0;
+        margin-bottom: 10vh;
     }
     #header {
+        all: unset;
         position: static;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         background-color: rgb(88, 34, 60);
-        height: 20vh;
-        width: 100%;
+        height: 50px;
+        width: 100vw;
+        padding-top: 10px;
+        
     }
     #froggo-and-logo {
-        display: flex;
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
-     
-        margin-top: 30px;
-        padding-bottom: 10px;
+        all: unset;
         background-color: rgb(88, 34, 60);
+        height: 100%;
+       padding-left: 15px;
+        width: 22vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
     
    
     
     #fwl {
+        all: unset;
         position: static;
         /*top: 0px;
         width: 90%;*/
-        opacity: .95;
-        max-width: 1100px;
-        height: 16vh;
-        width: auto;
-        
+        opacity: 1;
+        height: 100%;
     }
     
 
@@ -518,41 +540,55 @@ button {
         width: 180px;
     }*/
 #both {
+    all: unset;
     margin: 0;
     padding: 0;
     position: static;
-    display: flex;
+    display: inline-block !important;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     border-radius: 14px;
     border: 0;
-    width: 100vw;
     background-color: rgb(88, 34, 60);
+ 
+    width: fit-content;
+  
+
 }
 #menu {
     display: none;
 }
 #menu-container {
     z-index: 0;
-    display: flex;
-
+    display: inline-block;
+    box-sizing: border-box;
+    width: fit-content;
     flex-direction: row !important;
     border: rgb(247, 246, 233) solid 0px;
     /*border-radius: 15px;*/
     background-color: rgb(88, 34, 60);
-    padding-top: 2px;
+    padding-top: 0px;
+    padding-right: 1.5vw;
+    margin-left: 1vw;
     padding-bottom: 0;
+    justify-content: center;
+    align-items: center;
     position: static;
-    top: auto; 
-    left: auto; 
-    width: auto;
+
+    /*position: fixed;
+    top: 0; 
+    right: 0; */
+    
 }
 
 .fixed {
+    all: unset;
     position: fixed !important;
-    top: unset;
-    left: unset;
-    width: unset;
+    top: 0;
+    right: 0;
+    width: unset; 
+
     /*transition: top 0.3s ease;*/
 }
     
@@ -560,13 +596,16 @@ button {
     #button-container {
     display: flex;
     flex-direction: row !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
+    align-items: center;
     position: static;
     background-color: rgb(88, 34, 60);
-    width: 70%;
+    width: fit-content;
     margin: 0;
     border-radius: 15px;
     border: 0;
+   
+    margin-right: .5vw;
   
     
 }
@@ -580,10 +619,11 @@ button {
 
     button {
         display: flex;
+        flex-shrink: 1;
         justify-content: center;
         align-items: center;
         font-family: 'ClaireBold';
-        width: 150px;
+        width: 13vw;
         height: 30px;
         font-size: 18px;
         border: rgb(88, 34, 60) solid 1px;
@@ -622,9 +662,7 @@ button {
         border-top-right-radius: 14px;
         border-bottom-right-radius: 14px;
     }
-    #support-text {
-        margin-bottom: 8vh;
-    }
+
    
 
    
@@ -635,6 +673,10 @@ button {
         align-items: center;
     }
 
+    #about-container {
+        padding: 5vw;
+    }
+    
     /*Buttons:
     #art, #out {
         width: 90px;
@@ -647,47 +689,82 @@ button {
     }*/
 
 
-#out-container, #about-container, #shop-container, #request-container, #support-container {
+#out-container, #about-container, #request-container, #support-container {
     width: 50vw;
     min-width: 600px; 
 }
 
-
 /*Images (desktop):*/
 
 #art-container {
+
     width: 100% !important;
     display: flex;
 }
 
-#art-box {
+#art-box, #shop-box {
+
     width: 100vw !important;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: row;
-    gap: 20px;
 }
 
-.art img {
+.art img, .shop img {
     height: 300px;
 }
 
 
 .thumbnail {
-    width: calc(50% - 20px);
-    margin: 10px;
-    display: block;
+    width: 50%;
+    
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .thumbnail img {
     width: 75%;
     height: auto;
     cursor: pointer;
+    background-color: black;
+}
+
+.thumbnail.art img:hover {
+    filter: brightness(50%);
+}
+
+.thumbnail.art img:active {
+    transform: scale(97%);
+}
+
+.thumbnail.art .hover-text {
+    position: absolute;
+    bottom: -100%;
+    
+    left: 10;
+    width: 65%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0);
+    font-size: 3em;
+    font-family: 'ClaireBold';
+    background-color: rgba(0, 0, 0, 0);
+   
+    transform: translateY(0);
+    transition: bottom .4s ease, transform .4s ease;
+    pointer-events: none; /* Ensure it doesn't block hover */
+  
+}
+
+.thumbnail.art img:hover + .hover-text {
+    bottom: 33%; /* Move to the bottom third */
+  color: white;
+    transform: translateY(0);
+    display: block;
 }
 
 .art {
@@ -703,7 +780,7 @@ button {
 .out {
     width: 400px;
     border-radius: 15px;
-    border: rgb(242, 252, 211) solid 3px;
+    border: rgb(242, 252, 211) solid 0px;
     margin-top: 1vh;
     margin-bottom: 1vh;
     color: rgb(247, 246, 233);
@@ -711,8 +788,28 @@ button {
 
 
 #request-container, #shop-container {
-    width: 350px !important;
+    width: 50vw !important;
     min-width: 350px !important;
+}
+
+.thumbnail.shop {
+    width: 100%;
+}
+
+.thumbnail.shop img{
+    width: 100%;
+    background-color: #c37028;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-composite: destination-in;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-composite: exclude;
+}
+
+.thumbnail.shop img:hover {
+  filter: brightness(50%);
 }
 
 #support-container {

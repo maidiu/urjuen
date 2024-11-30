@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleoo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Patua+One&family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
     
     <div id="ig-logo-container" style="display:none">
         <a href='https://www.instagram.com/urjuen.art/'>
-            <img id="ig-logo" src="igcream.png">
+            <img id="ig-logo" src="ig logo maybe.png">
         </a>
     </div>
     
@@ -27,7 +27,7 @@
             
             <div id="header">
                 <div id="froggo-and-logo">
-                        <img id="fwl" src="logogrey.png">
+                        <img id="fwl" src="urjuen.png">
                 </div>
                 <div id="menu-container">
                     <div id="both">
@@ -37,7 +37,7 @@
                             <button id="out">out</button>
                             <button id="about">about</button>
                             <button id="shop">shop</button>
-                            <button id="request">services</button>
+                            <button id="request">contact</button>
                             <button id="support">support</button>
                         </div>
                         </div>
@@ -45,45 +45,49 @@
                 
             </div>
             <div id="text-container" style="margin-top:40px">
+                <div id="lightbox" class="lightbox">
+                    <span class="close" onclick="closeLightbox()">&times;</span>
+                    <div class="swipe-indicator">
+                        &#10095;
+                    </div>
+                    <div class="lightbox-content">
+                        
+                        <div class="lightbox-images" id="lightboxImages"></div>
+                        <div class='direcbutts'>
+                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                        </div>
+                    </div>
+                </div>
                 <div id="art-box" class="text" data-name="folio">
                     <!--img class="art" src="watermelon.png"-->
                     <!--img class="art" src="caterpillarandgrasshopper.jpeg"--><br>
                     
                     <!--div style="font-size: 50px;width:100%;margin:auto;">comics</!--div--><br>
                     
-                    <div class="thumbnail art" onclick="openLightbox(0)">"plop"
+                    <div class="thumbnail art" data-name='"plop"' onclick="openLightbox(0)">
+                        <!--span class="hover-text">Plop</!--span-->
                         <img src="images/plop/plop1.png" alt="plop slide 1">
+                       
                     </div><br>
-                    <div class="thumbnail art" onclick="openLightbox(1)">"tunnels"
+                    <div class="thumbnail art" data-name='"tunnels"' onclick="openLightbox(1)">
                         <img src="images/tunnels/tunnels1.webp" alt="tunnels slide 1">
                     </div><br>
-                    <div class="thumbnail art" onclick="openLightbox(2)">"concerning"
+                    <div class="thumbnail art" data-name='"miller"' onclick="openLightbox(2)">
                         <img src="images/miller/miller1.webp" alt="miller slide 1">
                     </div>
-                    <div class="thumbnail art" onclick="openLightbox(3)">"but hamas"
+                    <div class="thumbnail art" data-name='"but hamas"' onclick="openLightbox(3)">
                         <img src="images/buthamas/buthamas1.webp" alt="but hamas slide 1">
                     </div>
                     
                     <!--onclick="closeLightbox()"-->
                 
-                    <div id="lightbox" class="lightbox">
-                        <span class="close" onclick="closeLightbox()">&times;</span>
-                        <div class="swipe-indicator">
-                            &#10095;
-                        </div>
-                        <div class="lightbox-content">
-                            
-                            <div class="lightbox-images" id="lightboxImages"></div>
-                            <div class='direcbutts'>
-                                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                                <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <div id="out-box" class="text hidden" data-name="out">
-                    <img id="out-top" class="out" src="wgreta.png">i do a meeting
+                    <img id="out-top" class="out" src="images/out/greta.jpg">i do a meeting
+                    
                     <img id="out-bottom" class="out" src="proletaren.png">i am in paper
                    
                 </div>
@@ -116,12 +120,21 @@
                 </div>
                 <div id="shop-box" class="text hidden" data-name="shop">
                     <div id="shop-container"><p id="shop-text">
-                        i have many merchandise<br><br>top quality<br><br>
-                        you do a shopping<br><br>
+                        t-shirts are coming soon!
+                        <br>
+                        <div class="thumbnail shop" data-name='"watermelon"' onclick="openLightbox(4)">
+                            <!--span class="hover-text">Plop</!--span-->
+                            <img src="images/shop/watermelon/watermelonshirt1.png" alt="watermelon shirt">
+                            <br>a percentage of every purchase goes to pro-pali orgs<br>
+                        </div><br>
+                        <div class="thumbnail shop" data-name='"molotov"' onclick="openLightbox(5)">
+                            <img src="images/shop/molotov/molotovshirt1.png" alt="molotov shirt">
+                        </div><br><br>DM @urjuen.art for price and pre-orders
+                        
                     </p>
                     </div>
                 </div>
-                <div id="request-box" class="text hidden" data-name="services">
+                <div id="request-box" class="text hidden" data-name="contact">
                     <div id="request-container"><p id="request-text">
                         you have idea, want comic?<br>
                         you giving money, i drawing.<br>
@@ -148,7 +161,7 @@
                     <div id="support-container"><p id="support-text">i am artist<br>
                         <br>i am poverty<br><br>i am hunger<br><br>give please<br>
                         
-                    </p><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="Getlaycomics" data-color="#BD5FFF" data-emoji="🫘"  data-font="Cookie" data-text="Buy me a beans" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+                    </p><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" id='beans' data-name="bmc-button" data-slug="Getlaycomics" data-color="#838720" data-emoji="🫘"  data-font="Cookie" data-text="Buy me a beans" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
                     <br></div>
                 </div>
             </div>
