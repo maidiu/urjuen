@@ -72,7 +72,7 @@ if (!isScreenBig) {
     menu.addEventListener('click', ()=> {
         if (menuClicked === 0) {
             buttonContainer.style.display = 'block'
-            both.style.zIndex = '1000'
+            both.style.zIndex = '900'
             both.style.justifyContent = 'space-between'
             //fnl.style.position = 'fixed'
             textContainer.style.display = 'flex'
@@ -306,6 +306,8 @@ document.querySelectorAll('.thumbnail.art').forEach((thumbnail) => {
    
     });
 });
+
+
 document.querySelectorAll('.thumbnail.shop img').forEach((img) => {
     const imageSrc = img.getAttribute('src');
     img.style.webkitMaskImage = `url(${imageSrc})`;
